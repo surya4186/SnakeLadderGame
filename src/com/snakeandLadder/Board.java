@@ -21,8 +21,6 @@ class Board {
 
 		cells.put(boardSize, new Cell(boardSize, "TARGET"));
 		Scanner scan = new Scanner(System.in);
-
-		// Add snakes and ladders
 		System.out.println("enter snake count");
 		int snake = scan.nextInt();
 		for (int i = 0; i < snake; i++) {

@@ -14,7 +14,7 @@ public class Main {
 		int playerCount=scan.nextInt();
 		for(int i=0;i<playerCount;i++) {
 			System.out.println("Enter the player name");
-			String name=scan.next();
+			String name=scan.next(); 
 			game.addPlayer(new Player(name));
 		}
 		

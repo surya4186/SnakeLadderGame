@@ -19,44 +19,45 @@ class Game {
 	}
 
 	void start() {
-		
-		
+
 		boolean gameEnded = false;
 
-		int sum=0;
-		
+//		int sum=0;
+
 		while (!gameEnded) {
 			for (Player player : players) {
 				int newPosition = rollDice();
-				System.err.println(newPosition);
-				sum+=newPosition;
-				
-				gameEnded = move(board, newPosition,player);
+//				System.err.println(newPosition);
+				sum += newPosition;
+
+				gameEnded = move(board, newPosition, player);
 				if (gameEnded) {
 					System.out.println(player.name + " wins");
 					break;
 				}
 			}
 		}
-		System.out.println(sum);
-		
-	}
-	 boolean move(Board board, int number, Player player) {
-	        int newPosition = player.position + number;
-	        if (newPosition > board.boardSize) {
-	            return false;
-	        }
+//		System.out.println(sum);
 
-	        Cell cell = board.get(newPosition);
-	        if (cell.getType().equals("TARGET")) {
-	            return true;
-	        } else if (cell.getType().equals("SNAKE") || cell.getType().equals("LADDER")) {
-	            player.position = cell.getTarget();
-	        } else {
-	            player.position = newPosition;
-	        }
-	        return false;
-	    }
+	}
+
+	boolean move(Board board, int number, Player player) {
+		int newPosition = player.position + number;
+		if (newPosition > board.boardSize) {
+			return false;
+		}
+
+		Cell cell = board.get(newPosition);
+		if (cell.getType().equals("TARGET")) {
+			return true;
+		} else if (cell.getType().equals("SNAKE") || cell.getType().equals("LADDER")) {
+			player.position = cell.getTarget();
+		} else {
+			player.position = newPosition;
+			System.out.println(player.name + "  " + player.position);
+		}
+		return false;
+	}
 
 	int rollDice() {
 		Random rand = new Random();
